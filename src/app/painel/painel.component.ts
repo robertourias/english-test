@@ -23,7 +23,7 @@ export class PainelComponent implements OnInit, OnDestroy {
 
   @Output() public encerrarJogo: EventEmitter<string> = new EventEmitter()
 
-  constructor() { 
+  constructor() {
     this.atualizaRodada()
   }
 
@@ -39,7 +39,7 @@ export class PainelComponent implements OnInit, OnDestroy {
   }
 
   public verificarResposta(): void {
-    if(this.rodadaFrase.frasePtBr == this.resposta) {
+    if(this.rodadaFrase.frasePtBr.toLocaleLowerCase() === this.resposta.toLocaleLowerCase()) {
 
       //trocar pergunta da rodada
       this.rodada++
@@ -52,7 +52,7 @@ export class PainelComponent implements OnInit, OnDestroy {
         this.encerrarJogo.emit('vitoria')
       }
 
-      //atualiza o objeto rodadaFrase 
+      //atualiza o objeto rodadaFrase
       this.atualizaRodada()
 
     } else {
